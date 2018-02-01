@@ -24,9 +24,12 @@ contract LogicLayer{
 	function transfer (address _from, address _to, uint _amount) external isMainContract returns (bool) {
 		uint senderBalance = dataLayer.getBalance(_from);
 		uint recieverBalance = dataLayer.getBalance(_to);
+		uint oldBalance = senderBalance + recieverBalance;
 		require(_amount <= senderBalance);
 		dataLayer.setBalance(_to, recieverBalance + (_amount +10));
 		dataLayer.setBalance(_from, senderBalance - _amount - 10);
+		uint newBalance = (dataLayer.getBalance(_from) + dataLayer.getBalance(_to));
+		assert(newBalance == oldBalance);
 		dataLayer.fireTransferEvent(_from, _to, _amount);
 		return true;
 	}
