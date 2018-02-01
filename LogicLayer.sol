@@ -27,7 +27,7 @@ contract LogicLayer{
 		require(_amount <= senderBalance);
 		dataLayer.setBalance(_to, recieverBalance + (_amount +10));
 		dataLayer.setBalance(_from, senderBalance - _amount - 10);
-		//DataLayer.Transfer(msg.sender, _to, _amount);
+		dataLayer.fireTransferEvent(_from, _to, _amount);
 		return true;
 	}
 	

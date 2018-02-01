@@ -46,5 +46,11 @@ contract DataLayer {
 	function getBalance (address _account) view  external isLatestLogicLayer  returns(uint) {
 		return balanceOf[_account];
 	}
+
+	// firing Transfer Event
+	function  fireTransferEvent (address _from, address _to, uint _amount) external isLatestLogicLayer {
+		Transfer(_from, _to, _amount);
+	}
+	
 }
 
