@@ -1,5 +1,8 @@
 pragma solidity ^0.4.17;
 
+import "./Main.sol";
+import "./DataLayer.sol";
+
 contract LogicLayer{
     
     DataLayer dataLayer;

@@ -1,5 +1,7 @@
 pragma solidity ^0.4.17;
 
+import "./LogicLayer.sol"
+
 contract Main{
     
     address public owner;
