@@ -21,7 +21,7 @@ contract LogicLayer{
 		mainContractAddress = _mainContractAddress;
 	}
 
-	function transfer (address _from, address _to, uint _amount) public isMainContract returns (bool) {
+	function transfer (address _from, address _to, uint _amount) external isMainContract returns (bool) {
 		uint senderBalance = dataLayer.getBalance(_from);
 		uint recieverBalance = dataLayer.getBalance(_to);
 		require(_amount <= senderBalance);
@@ -31,7 +31,7 @@ contract LogicLayer{
 		return true;
 	}
 	
-	function getBalance(address _account) public isMainContract view returns (uint){
+	function getBalance(address _account) external isMainContract view returns (uint){
 	   return dataLayer.getBalance(_account);
 	}
 }
